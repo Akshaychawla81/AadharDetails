@@ -2,15 +2,20 @@ package com.AadharCardDetails.User.bean;
 
 import java.util.*;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
+import org.springframework.stereotype.Component;
+
+
 
 
 @Entity
+@Component
 public class User {
 
 	@Id
@@ -21,8 +26,9 @@ public class User {
 	private String name;
 	private String address;
 	private 	Long aadharNumber;
+	@Lob
 	private 	byte[] frontImage;
-	
+	@Lob
 	private 	byte[] backImage;
 	private	Date date;
 	
@@ -45,13 +51,7 @@ public class User {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	@Lob
-	public byte[] getFrontImage() {
-		return frontImage;
-	}
-	public void setFrontImage(byte[] frontImage) {
-		this.frontImage = frontImage;
-	}
+	
 	public byte[] getBackImage() {
 		return backImage;
 	}
@@ -70,6 +70,12 @@ public class User {
 	}
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	public byte[] getFrontImage() {
+		return frontImage;
+	}
+	public void setFrontImage(byte[] frontImage) {
+		this.frontImage = frontImage;
 	}
 	
 	
