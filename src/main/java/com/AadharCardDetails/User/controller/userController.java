@@ -38,8 +38,7 @@ public class userController {
 	public Userrepository userrepo;
 
 
-	@Autowired
-	public User user;
+
 	
 // It i used to get all the Users that are present in the DataBase
 	@GetMapping(path="/Users")
@@ -58,13 +57,14 @@ public class userController {
 	@PostMapping(path="/User/Detail")
 	public ResponseEntity<User> Adduser(@RequestParam("name") String name ,@RequestParam("address") String address,@RequestParam("aadharNumber") Long aadharNumber ,@RequestParam("date") String date , @RequestParam("frontImage") MultipartFile frontImage , @RequestParam("backImage") MultipartFile backImage   ) throws IOException, ParseException
 	{
+		
+	User user = new User();
 	user.setName(name);
 	user.setAddress(address);
 	user.setAahdarNumber(aadharNumber);
 	user.setBackImage(backImage.getBytes());
 	user.setFrontImage(frontImage.getBytes());               
     Date date1=new SimpleDateFormat("YYYY-MM-DD").parse(date);  
-  
 	user.setDate(date1);
 
 	User u = userrepo.save(user);
